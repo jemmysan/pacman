@@ -1,0 +1,416 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    justify-content: center;
+    padding : 1em 0em;
+}
+
+
+/*******Game*******/
+.game
+{
+    position: relative;
+    height: 8em;
+    width : auto;
+    background-color: black;
+    padding: 3em 0em; 
+}
+
+.point
+{
+    border-bottom: 10px dotted white;
+}
+
+
+.pacman
+{
+    top : 1em;
+    position : absolute;
+    background-color: rgb(49, 212, 40);
+    border-radius: 50%;
+    animation: moveForward 10s linear infinite;
+    animation-delay: 0.8s;
+}
+
+ .pacman::before , .pacman::after
+{
+   content : "";
+   position: absolute;
+   top :0;
+   bottom : 0;
+   left: 0;
+   right: 0;
+   border-radius: 50%;
+} 
+
+ .pacman::before
+{
+    animation: chunk-top 0.5s ease infinite;
+    border: 40px solid rgb(227, 227, 3); 
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+} 
+
+@keyframes chunk-top
+{
+    0%,100%
+    {
+        transform :rotate(-45deg);
+    }
+    50%
+    {
+        transform :rotate(-80deg);
+    }
+} 
+
+
+
+.pacman::after
+{
+    animation: chunk-bottom 0.5s ease infinite;
+    border: 40px solid rgb(227, 227, 3); 
+    border-right-color: transparent;
+    border-top-color: transparent;   
+}
+
+@keyframes chunk-bottom
+{
+    0%,100%
+    {
+        transform :rotate(-40deg);
+
+    }
+    50%
+    {
+        transform :rotate(0deg);
+    }
+} 
+
+
+
+
+/***************ghost*********/
+.ghost
+{
+    width : 5em;
+    height : 5em;
+    background-color: red;
+    position: absolute;
+    top : 1em;
+    left:7em;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    animation: moveForward 10s linear infinite, coloralter 0.5s linear infinite;
+}
+
+.ghosteyes
+{
+    width: 4em;
+    height : 2em;
+    display : flex;
+    justify-content: space-around;
+    flex : 1;
+}
+
+.geye
+{
+    width : 1.5em;
+    height : auto;
+    background-color: aliceblue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.geye > div
+{
+    width : .5em;
+    height: 0.5em;
+    background-color: black;
+    border-radius: 50%;
+    position : relative;
+}
+
+.ghosteyes > :nth-child(1) > div
+{
+    background-color: blue;
+    transform: translate(2dg,);
+    position: absolute;
+    animation: moveye1 0.5s linear infinite;
+
+}
+
+.ghosteyes > :nth-child(2) > div
+{
+    background-color: red;
+    position: absolute;
+    animation: moveye2 0.5s linear infinite; 
+
+}
+
+@keyframes coloralter {
+    50% {
+      background: blue;
+    }
+  }
+  
+
+
+@keyframes moveye1 
+{
+    0%, 100% {
+      left: 8px;
+    }
+    50% {
+      left: 17px;
+    }
+}
+
+@keyframes moveye2 
+{
+    0%, 100% {
+        left:64px;
+      }
+      50% {
+        left: 44px;
+      }
+  }
+
+
+/******moving forward***/
+  @keyframes moveForward {
+    0% {
+      left: -20%;
+    }
+    100% {
+      left: 100%;
+    }
+    
+  } 
+
+/*****************************/
+
+
+
+/*******Icone**********/
+.icone
+{
+    display: flex;
+    justify-content: center;
+    flex : 1;
+    margin-top: 10em;
+    padding: 4em 8em;
+    width: 100%;
+}
+
+.icone > div
+{
+    margin: 2em;
+    border: 1px solid;
+    width: 22em;
+    height : 22em;
+    border-radius: 50%; 
+    padding-top: 4em ;
+    background-color: yellow;
+    border : 5px solid rgb(252, 178, 73);
+    box-shadow: 0px -50px 30px rgb(255, 120, 0) inset;
+    background-image: linear-gradient(yellow rgb(255, 140, 0));
+}
+
+
+/*******eyes******/
+.eye 
+{
+    width :auto;
+    display: flex;
+    justify-content: center;
+    padding: 0em 1em;
+}
+
+.glob
+{
+    margin: 0em 1em;
+    border : 1px solid ;
+    width :8em;
+    height: 8em;
+    border-radius: 50%;
+    display: flex;
+    flex : 1;
+    justify-content: space-around;
+    background-color: aliceblue;
+}
+
+    /******** glob ********/
+
+
+    .iris1
+    {
+        width: 2em;
+        height: 2em;
+        background-color: black;
+        border-radius: 50%;
+        margin : 0 1em;
+        
+    }
+
+     .emoj1 .eye .glob
+    {
+        animation: rotation 1s infinite linear;
+    }  
+
+    @keyframes rotation 
+    {
+        0%
+        {
+            transform: rotate(0deg);
+        }
+
+        100%
+        {
+            transform: rotate(360deg);
+        }    
+    }
+
+
+/*********emoji1********/
+
+/******emoji2 ******/
+.emoj1 .eye > div
+{
+    box-shadow: 3px 3px 3px 3px rgb(81, 80, 80) inset;
+}
+
+/******emoji2 ******/
+.emoj2 .eye > div:nth-child(1)
+{
+    display : flex;
+    justify-content: center;
+    position: relative;
+    border: none;
+    background: none;
+}
+
+.emoj2 .eye > div:nth-child(1) > div
+{
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    border-top: 25px solid rgb(139, 36, 36);
+    border-radius: 50%;
+    top : 3rem
+
+}
+.emoj2 .eye > div:nth-child(2)
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 3px 3px rgb(81, 80, 80) inset;
+
+}
+
+.emoj2 .eye > div:nth-child(2)> div
+{
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border-radius: 50%;
+    margin : 0 1em;
+}
+
+/*********emoji 3 eyes *******/
+
+.emoj3 .eye .glob
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 0 2em;
+}
+.emoj3 .eye .glob > div
+{
+    background: black;
+    width: 2.5em;
+    height: 3em;
+    background-color: rgb(117, 28, 28);
+    border-radius: 50%;
+    margin : 0 1em;
+    
+}
+
+
+/******Mouth******/
+.mouth
+{
+    display: flex;
+    margin:  4em 7em;
+    border: 1px solid;
+    width: 8em;
+    height: 2em;
+    
+}
+
+    /*****mouth emoji 1*****/
+    .emoj1 .mouth
+    {
+        border-radius: 20%;
+        height : 0.5em;
+        background-color: brown;
+    }
+
+    /*****mouth emoji 2*****/
+    .emoj2
+    {
+        position: relative;
+    }
+    .emoj2 .mouth
+    {
+        position : absolute;
+        margin-bottom:1em;
+        margin-left: 21%;
+        height : 10em;
+        width : 12em;
+        border : none;
+        bottom : 10%;
+        border-radius : 50%;
+        border-bottom: 60px solid brown;
+    }
+
+    .emoj2 .mouth::before
+    {
+        content : '';
+        position: absolute;
+        top :7em;
+        bottom : 9%;
+        left : 3.5em;
+        right : 0;
+        width: 5em;
+        height : 5em;
+        background: rgb(217, 13, 54);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+
+    }
+
+
+    /*******emoj3******/
+    .emoj3 .mouth
+    {
+        margin-top : 0em;
+        margin-left: 26%;
+        height : 10em;
+        width : 10em;
+        border: none;
+        border-radius: 50%;
+        border-top: 10px solid brown;         
+    }
